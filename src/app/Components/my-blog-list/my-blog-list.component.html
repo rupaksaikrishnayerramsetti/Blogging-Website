@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="blog-header">
+        <h2>My Blogs</h2>
+        <button mat-raised-button color="primary" (click)="Blogpage()" class="add-blog-btn">Add Blog</button>
+    </div>      
+    <div class="blog-grid">
+        <ng-container *ngIf="blogs$ | async as blogs; else loading">
+            <mat-card *ngFor="let blog of blogs" class="blog-card">
+                <mat-card-header>
+                    <mat-card-title>{{ blog.title }}</mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="status-indicator" [ngClass]="{'active': blog.status === 'active', 'inactive': blog.status === 'inactive'}">
+                            <mat-icon [ngStyle]="{'color': blog.status === 'active' ? 'green' : 'red'}">fiber_manual_record</mat-icon>
+                            {{ blog.status }}
+                        </span>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{ blog.description }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="editBlog(blog)">Edit</button>
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
+        <ng-template #loading>
+            <div class="loading-container">
+                <mat-spinner diameter="50"></mat-spinner>
+                <p>Loading blogs...</p>
+            </div>
+        </ng-template>
+    </div>
+    <mat-paginator [length]="totalBlogs" [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="onPageChange($event)"></mat-paginator>
+</div>

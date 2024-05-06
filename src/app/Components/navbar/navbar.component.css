@@ -1,0 +1,27 @@
+.bold-title {
+    font-weight: bold;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  mat-toolbar {
+    background-color: #d67f7f;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+  }
+
+  mat-button:hover {
+    background-color: #444;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+    }
+    nav mat-button {
+      margin-bottom: 10px;
+    }
+  }

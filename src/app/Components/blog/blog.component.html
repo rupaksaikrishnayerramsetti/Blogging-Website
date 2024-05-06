@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="blog-card">
+    <h1 mat-h1>BLOG</h1>
+    <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-icon matSuffix>subtitles</mat-icon>
+        <mat-error *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+          <span *ngIf="title?.errors?.['required']">Title is required.</span>
+          <span *ngIf="title?.errors?.['title']">Title is not valid.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+          <span *ngIf="description?.errors?.['required']">Description is required.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="inactive">Inactive</mat-option>
+        </mat-select>
+        <mat-error *ngIf="status?.invalid && (status?.dirty || status?.touched)">
+          <span *ngIf="status?.errors?.['required']">Status is required.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button color="warn" id="cancel" (click)="handleCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
