@@ -25,3 +25,7 @@
       margin-bottom: 10px;
     }
   }
+
+  .logo {
+    max-height: 40px;
+  }

@@ -32,6 +32,7 @@ import { BlogComponent } from './Components/blog/blog.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AngularFirestoreModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

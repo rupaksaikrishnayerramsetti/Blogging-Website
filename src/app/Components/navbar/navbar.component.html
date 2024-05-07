@@ -1,13 +1,29 @@
 <mat-toolbar color="#333">
-    <mat-toolbar-row>
-      <span class="bold-title">Blogging Website</span>
-      <span class="example-spacer"></span>
-      <span fxLayout="row" fxLayoutGap="16px">
-        <button mat-button (click)="goToHome()">Home</button>
-        <button mat-button (click)="goToMyBlogs()">My Blogs</button>
-        <button mat-button (click)="goToProfile()">Profile</button>
-        <button mat-button (click)="logout()">Logout</button>
-      </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
+  <mat-toolbar-row>
+    <span class="bold-title" *ngIf="!isMobile">Blogging Website</span>
+    <span *ngIf="isMobile" matTooltip="Blogging Website"><img src="assets/icons/blog1.png" alt="Blogging Website" class="logo"></span>
+    <span class="example-spacer"></span>
+    <span *ngIf="islogin" fxLayout="row" fxLayoutGap="16px">
+      <button mat-icon-button (click)="goToHome()" matTooltip="Go to Home">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goToMyBlogs()" matTooltip="View My Blogs">
+        <mat-icon>list</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goToProfile()" matTooltip="View Profile">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button (click)="logout()" matTooltip="Logout">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </span>
+    <span *ngIf="!islogin" fxLayout="row" fxLayoutGap="16px">
+      <button mat-icon-button (click)="goToHome()" matTooltip="Go to Home">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goToLogin()" matTooltip="Login">
+        <mat-icon>login</mat-icon>
+      </button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
